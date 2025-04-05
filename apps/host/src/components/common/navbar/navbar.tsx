@@ -70,8 +70,20 @@ function Navbar({
         onClose={toggleDrawer}
         open={isDrawerOpen}
         width="50%"
-        className={theme === 'dark' ? styles.darkDrawer : ''}
+        className={
+          theme === 'dark' ? `${styles.darkDrawer} ${styles.customDrawer}` : styles.customDrawer
+        }
         style={{ background: theme === 'dark' ? '#192841' : '#fff' }}
+        closeIcon={
+          <span
+            className={styles.closeIcon}
+            style={
+              { '--close-icon-color': theme === 'dark' ? '#fff' : '#000' } as React.CSSProperties
+            }
+          >
+            ✖
+          </span>
+        }
       >
         <div className={styles.drawerContent}>
           <ul className={styles.drawerList}>

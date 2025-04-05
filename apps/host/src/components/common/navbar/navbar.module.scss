@@ -92,24 +92,25 @@
       height: var(--github-svg-size);
     }
   }
-}
 
-@media screen and (width >= 768px) {
-  .navbar {
-    --icon-container-size: 40px;
-    --github-svg-size: 30px;
+  @media screen and (min-width: 768px) {
+    .navbar {
+      --icon-container-size: 40px;
+      --github-svg-size: 30px;
 
-    .links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
+      .links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
 
-    .logo > span {
-      font-size: 1.2rem;
+      .logo > span {
+        font-size: 1.2rem;
+      }
     }
   }
 }
+
 .right:first-child {
   display: flex;
 }
@@ -126,12 +127,57 @@
 
 .drawerListItem {
   margin-bottom: 1rem;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition:
+    background 0.3s,
+    color 0.3s;
+
+  &:hover {
+    background-color: var(--drawer-item-hover-bg, #1d2a44); // Use variable for hover bg
+    color: var(--drawer-item-hover-color, #f0f0f0); // Use variable for hover text color
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--drawer-item-hover-color, #f0f0f0); // Consistent hover color
+    }
+  }
 }
+
+.drawerListItem a {
+  color: inherit;
+}
+
+.drawerList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.darkDrawer .drawerListItem {
+  color: #b0b0b0;
+}
+
+.darkDrawer .drawerListItem a {
+  color: inherit;
+}
+
+.darkDrawer .drawerListItem:hover {
+  background-color: var(--drawer-item-dark-hover-bg, #2a3b5c);
+  color: #fff;
+}
+
 .ant-drawer-close {
   justify-content: flex-end;
   padding-left: 50px;
   margin-left: 500px;
 }
+
 .ant-drawer-header {
   display: flex;
   justify-content: space-between;
@@ -150,4 +196,33 @@
   border: none;
   color: var(--text-link);
   background-color: inherit;
+}
+
+/* Ensure color changes based on theme */
+.themeButton,
+.github {
+  color: var(--text-body); /* Default color for light theme */
+}
+
+.darkDrawer .themeButton,
+.darkDrawer .github {
+  color: #fff; /* White color for dark theme */
+}
+
+/* GitHub Icon */
+.github svg {
+  fill: inherit; /* Use inherited color for SVG */
+}
+
+.darkDrawer .github svg {
+  fill: #fff; /* White color for GitHub icon in dark theme */
+}
+
+/* Theme Toggle Button */
+.themeButton svg {
+  fill: inherit; /* Use inherited color for SVG */
+}
+
+.darkDrawer .themeButton svg {
+  fill: #fff; /* White color for theme button icon in dark theme */
 }
